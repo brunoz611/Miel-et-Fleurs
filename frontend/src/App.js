@@ -3,13 +3,17 @@ import Header from './components/Header';
 import ProductList from './components/ProductList';
 import LoadingAnimation from './components/LoadingAnimation';
 
+// Configuration de l'API
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3000'
+  : 'https://miel-et-fleurs.vercel.app';
+
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Simuler un délai de chargement pour voir l'animation
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
     console.log('API_URL:', API_URL);
     setTimeout(() => {
       fetch(`${API_URL}/api/products`)
