@@ -18,31 +18,30 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--white);
   color: var(--black);
-  cursor: none; /* Cache le curseur par défaut */
 }
 
-/* Curseur abeille personnalisé */
-body::after {
-  content: '🐝';
-  position: fixed;
-  font-size: 24px;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  animation: beeFly 0.5s ease-in-out infinite alternate;
+/* Curseur abeille personnalisé (desktop uniquement) */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  body::after {
+    content: '🐝';
+    position: fixed;
+    font-size: 24px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: beeFly 0.5s ease-in-out infinite alternate;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+  }
 }
 
 @keyframes beeFly {
   0% { transform: translate(-50%, -50%) rotate(-5deg); }
   100% { transform: translate(-50%, -50%) rotate(5deg); }
-}
-
-/* Animation du curseur qui suit la souris */
-@media (hover: hover) {
-  body::after {
-    left: var(--mouse-x, 50%);
-    top: var(--mouse-y, 50%);
-  }
 }
 
 .app {
@@ -280,11 +279,20 @@ body::after {
   font-size: 1rem;
   font-weight: bold;
   transition: all 0.3s ease;
-  cursor: none;
+  cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-.add-to-cart-btn:hover {
+@media (hover: hover) and (pointer: fine) {
+  .add-to-cart-btn {
+    cursor: none;
+  }
+}
+
+.add-to-cart-btn:hover,
+.add-to-cart-btn:active {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(255, 165, 0, 0.4);
 }
@@ -380,21 +388,170 @@ body::after {
 
 /* Responsive */
 @media (max-width: 768px) {
+  /* Header mobile */
+  .header {
+    padding: 1rem;
+  }
+
   .header-content {
     flex-direction: column;
     gap: 1rem;
   }
-  
-  .nav {
-    gap: 1rem;
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .bee-icon {
+    font-size: 2rem;
   }
   
-  .product-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+  .nav {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  /* Main content mobile */
+  .main-content {
+    padding: 2rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
   }
   
   .page-title::after {
     display: none;
   }
+
+  /* Product list mobile */
+  .product-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    max-width: 100%;
+  }
+
+  .product-name {
+    font-size: 1.3rem;
+  }
+
+  .product-description {
+    font-size: 0.9rem;
+  }
+
+  .add-to-cart-btn {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+
+  /* Loading animation mobile */
+  .honey-jar {
+    width: 120px;
+    height: 160px;
+  }
+
+  .jar-lid {
+    width: 100px;
+    height: 18px;
+  }
+
+  .jar-body {
+    width: 110px;
+    height: 145px;
+  }
+
+  .jar-label {
+    font-size: 2.5rem;
+  }
+
+  .loading-text {
+    font-size: 1.2rem;
+  }
+
+  /* Footer mobile */
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer p {
+    font-size: 0.9rem;
+  }
 }
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+
+  .bee-icon {
+    font-size: 1.8rem;
+  }
+
+  .nav {
+    gap: 0.3rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .product-list {
+    gap: 1rem;
+  }
+
+  .product-name {
+    font-size: 1.2rem;
+  }
+
+  .product-image-placeholder {
+    font-size: 4rem;
+  }
+}
+
+/* Paysage mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .loading-container {
+    padding: 2rem 0;
+  }
+
+  .honey-jar {
+    width: 100px;
+    height: 140px;
+  }
+
+  .jar-body {
+    width: 90px;
+    height: 125px;
+  }
+}
+
+/* Tablettes */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .main-content {
+    padding: 2.5rem 2rem;
+  }
+}
+
