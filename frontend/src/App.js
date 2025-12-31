@@ -10,10 +10,15 @@ function App() {
   useEffect(() => {
     // Simuler un délai de chargement pour voir l'animation
     const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+    console.log('API_URL:', API_URL);
     setTimeout(() => {
       fetch(`${API_URL}/api/products`)
-        .then(response => response.json())
+        .then(response => {
+          console.log('Response:', response);
+          return response.json();
+        })
         .then(data => {
+          console.log('Data:', data);
           setProducts(data);
           setLoading(false);
         })
