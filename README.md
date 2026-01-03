@@ -1,8 +1,8 @@
-# 🐝 Site de Vente de Miel - Miel Artisanal
+#  Site de Vente de Miel - Miel Artisanal
 
 Site web full-stack pour la vente de miel avec un design inspiré des abeilles.
 
-## 🎨 Caractéristiques
+##  Caractéristiques
 
 - **Curseur personnalisé** : Une petite abeille animée suit votre souris
 - **Thème abeille** : Couleurs noir et jaune
@@ -10,7 +10,7 @@ Site web full-stack pour la vente de miel avec un design inspiré des abeilles.
 - **Design responsive** : S'adapte à tous les écrans
 - **API REST** : Backend Node.js/Express avec données de produits
 
-## 📁 Structure du Projet
+##  Structure du Projet
 
 ```
 Abe/
@@ -30,7 +30,7 @@ Abe/
     └── copilot-instructions.md
 ```
 
-## 🚀 Installation
+##  Installation
 
 ### Prérequis
 
@@ -51,7 +51,7 @@ cd frontend
 npm install
 ```
 
-## 💻 Démarrage
+##  Démarrage
 
 ### Lancer le Backend (Port 3000)
 
@@ -74,13 +74,13 @@ npm start
 
 Le site s'ouvrira automatiquement dans votre navigateur à `http://localhost:5173`
 
-## 🍯 API Endpoints
+##  API Endpoints
 
 - `GET /` - Message de bienvenue
 - `GET /api/products` - Liste tous les produits de miel
 - `GET /api/products/:id` - Récupère un produit spécifique
 
-## 🎨 Design
+##  Design
 
 ### Thème
 
@@ -94,8 +94,7 @@ Le site s'ouvrira automatiquement dans votre navigateur à `http://localhost:517
 2. **Loading** : Pot de miel qui se remplit progressivement
 3. **Cards** : Effet de survol avec élévation et ombre
 
-## 📦 Technologies Utilisées
-
+##  Technologies Utilisées
 ### Frontend
 - React 18
 - Webpack 5
